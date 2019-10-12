@@ -1,16 +1,21 @@
-var express = require("express");
-var logger = require("morgan");
-var mongoose = require("mongoose");
+//Dependencies
 
-
+const express  = require("express");
+const exphbs   = require("express-handlebars");
+const logger   = require("morgan");
+const mongoose = require("mongoose");
 
 // Require all models
 // var db = require("./models");
 
-var PORT = 3000;
+const PORT = 3000;
 
 // Initialize Express
-var app = express();
+const app = express();
+
+// Set view engine to handlebars
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
 
 // Configure middleware
 
@@ -24,7 +29,7 @@ app.use(express.static("public"));
 
 // Routes
 require("./routes/apiRoutes")(app);
-//require("./routes/htmlRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/newsScraper", { useNewUrlParser: true });
