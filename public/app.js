@@ -6,9 +6,23 @@ $(document).ready( function() {
     //console.log (data);
   
     let htmlString = '<div class="row no-collapse-1">';
+    let imageURL = "";
+    let commentsURL = "";
 
     data.forEach( function ( articleElement, elementIndex ) {
-      htmlString +=`<section class="4u"><a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a><div class="box"><p>${elementIndex}:${articleElement.title}</p><a href="https://www.newyorktimes.com/${articleElement.link}" class="button">Read More</a> </div></section>`;
+
+      imageURL = articleElement.imgURL ? `<img src=${articleElement.imgURL} alt="${articleElement.imgURL}"</img>` : "";
+      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a href="/commentModal">Add a comment.</a></div></section>` : 
+        `<br><br><a href="/commentModal"${articleElement.notes.length} comments.</a> </div></section>`; 
+
+      console.log("imageURL = "+ imageURL); 
+
+      
+      htmlString +=`<section class="4u"><a href="#" class="image featured">${imageURL}</a>`
+                 + `<div class="box"><p><strong>${articleElement.title}</strong><br>`
+                 + `${articleElement.summary}</p>`
+                 + `<a href="https://www.nytimes.com/${articleElement.link}" class="button">Read More</a>`
+                 + commentsURL;
 
       if ( (elementIndex + 1) % 3 === 0) {
         htmlString +="</div>";

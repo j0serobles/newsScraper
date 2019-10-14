@@ -11,27 +11,31 @@ var cheerio = require("cheerio");
 module.exports = function(app) {
  
     // A GET route for scraping the echoJS website
-app.get("/scrape", function(req, res) {
+app.get("/scrape/:source", function(req, res) {
     // First, we grab the body of the html with axios
     // axios.get("http://www.echojs.com/").then(function(response) {
-      axios.get("http://www.nytimes.com/").then(function(response) {
+    if (req.params.source === "nyt" || ! req.params.source) {
+      scrapeURL = "http://www.nytimes.com"; 
+    }
+    axios.get(scrapeURL).then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
-  
+
       // Now, we grab every h2 within an article tag, and do the following:
       $("article").each(function(i, element) {
         
         // Save an empty result object
         var result = {};
-  
+
         // Add the text and href of every link, and save them as properties of the result object
         result.link  = $(this).find("a").attr("href");
         result.title = $(this).find("h2").text();
-        
+        result.summary = $(this).find("p").text();
+        result.imgURL = $(this).find("a figure img").attr("src");
 
         console.log(util.inspect(this));
         console.log (`result is :` + JSON.stringify(result,'',2));
-  
+
         // Create a new Article using the `result` object built from scraping
         db.Article.create(result)
           .then(function(dbArticle) {
@@ -43,7 +47,7 @@ app.get("/scrape", function(req, res) {
             console.log(err);
           });
       });
-  
+
       // Send a message to the client
       res.send("Scrape Complete");
     });
@@ -53,17 +57,16 @@ app.get("/scrape", function(req, res) {
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
-  db.Article.find({})
-    .then(function(dbArticle) {
+    db.Article.find({})
+      .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
-      res.json(dbArticle);
-    })
-    .catch(function(err) {
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
       // If an error occurred, send it to the client
-      res.json(err);
-    });
+        res.json(err);
+      });
 });
-
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {
