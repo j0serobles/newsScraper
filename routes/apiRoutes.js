@@ -113,16 +113,13 @@ app.post("/articles/:id", function(req, res) {
     // Create a new note and pass the req.body to the entry
     db.Article.update({ _id: req.params.id }, {$pull : { notes: req.params.note_id } }, { new: true }
     )
-    .then(function(dbArticle) {
+      .then(function(dbArticle) {
       // If we were able to successfully update an Article, send it back to the client
-      res.json(dbArticle);
-    })
-    .catch(function(err) {
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
       // If an error occurred, send it to the client
-      res.json(err);
-    });
-});
-
-
-
+        res.json(err);
+      });
+  });
 };

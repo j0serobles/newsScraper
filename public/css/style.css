@@ -571,6 +571,12 @@
 		color: inherit;
 	}
 
+/* Extra */
+	#extra {
+		visibility :  hidden; 
+	}
+
+
 /* Main */
 
 /* Footer */

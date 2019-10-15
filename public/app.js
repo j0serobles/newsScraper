@@ -12,10 +12,10 @@ $(document).ready( function() {
     data.forEach( function ( articleElement, elementIndex ) {
 
       imageURL = articleElement.imgURL ? `<img src=${articleElement.imgURL} alt="${articleElement.imgURL}"</img>` : "";
-      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a href="/commentModal">Add a comment.</a></div></section>` : 
+      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a class="leave-comment-link" href="#openModal" data-id="${articleElement._id}">Add a comment.</a></div></section>` : 
         `<br><br><a href="/commentModal"${articleElement.notes.length} comments.</a> </div></section>`; 
 
-      console.log("imageURL = "+ imageURL); 
+     // console.log("imageURL = "+ imageURL); 
 
       
       htmlString +=`<section class="4u"><a href="#" class="image featured">${imageURL}</a>`
@@ -33,10 +33,17 @@ $(document).ready( function() {
 
     });
 
+    $("#article-container").empty();
     $("#article-container").append(htmlString);
+    $("#article-container").css("visibility","visible");
+
+    //Whenever user clicks on "Add Comment" link.
+    $(".leave-comment-link").click( function() {
+      console.log("leave-comment-link clicked"); 
+      $("#modal, .modal-content").removeAttr("visibility");
+    });
 
   });
-
 
   // Whenever someone clicks a p tag
   $(document).on("click", "p", function() {

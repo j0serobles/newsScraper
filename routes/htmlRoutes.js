@@ -1,7 +1,16 @@
 module.exports = function(app) {
+
   app.get("/", function (req, res) {
     res.render("home");
   });
+
+
+  //Opens the "Leave Note" dialog.
+  app.get("/leaveNote/:articleId", function (req, res) {
+    console.log ("Called ./leaveNote/"+ req.params.articleId);
+    res.render("note_modal",{ articleID : req.params.articleId} );
+  });
+
 };
 
 // //Handlebars helper for rendering the Articles array passed as rows of three columns each.
