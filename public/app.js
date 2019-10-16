@@ -1,6 +1,10 @@
 // Grab the articles as a json
 $(document).ready( function() {
 
+  var dialog;
+  var form;
+  var commentTextArea = $( "#commentTextArea" ); 
+
   $.getJSON("/articles", function(data) {
 
     //console.log (data);
@@ -12,12 +16,12 @@ $(document).ready( function() {
     data.forEach( function ( articleElement, elementIndex ) {
 
       imageURL = articleElement.imgURL ? `<img src=${articleElement.imgURL} alt="${articleElement.imgURL}"</img>` : "";
-      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a class="leave-comment-link" href="#openModal" data-id="${articleElement._id}">Add a comment.</a></div></section>` : 
+      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a href="#" class="leave-comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">Add a comment.</a></div></section>` : 
         `<br><br><a href="/commentModal"${articleElement.notes.length} comments.</a> </div></section>`; 
 
-     // console.log("imageURL = "+ imageURL); 
+      // console.log("imageURL = "+ imageURL); 
 
-      
+    
       htmlString +=`<section class="4u"><a href="#" class="image featured">${imageURL}</a>`
                  + `<div class="box"><p><strong>${articleElement.title}</strong><br>`
                  + `${articleElement.summary}</p>`
@@ -37,13 +41,62 @@ $(document).ready( function() {
     $("#article-container").append(htmlString);
     $("#article-container").css("visibility","visible");
 
-    //Whenever user clicks on "Add Comment" link.
-    $(".leave-comment-link").click( function() {
-      console.log("leave-comment-link clicked"); 
-      $("#modal, .modal-content").removeAttr("visibility");
+    //When the "Add Comments" link is followed:
+    $( ".leave-comment-link" ).click(function() {
+      dialog.data("articleID", $(this).attr("data-id")); 
+      dialog.data("articleTitle", $(this).attr("data-title")); 
+      console.log (dialog.data("articleID")); 
+      console.log (dialog.data("articleTitle")); 
+
+      dialog.dialog( "open" );
+      return (false); 
     });
 
   });
+
+  //Funtion to add a comment to the database
+  function addComment() {
+    console.log(arguments);
+  }
+
+  //Define a jQuery modal dialog based on the 
+  // dialog-form div from the page
+  dialog = $( "#dialog-form" ).dialog({
+    autoOpen: false,
+    height: 500,
+    width: 350,
+    modal: true,
+    buttons: {
+      "Add comment": addComment,
+      Cancel: function() {
+        dialog.dialog( "close" );
+      }
+    },
+    close: function() {
+      form[ 0 ].reset();
+      commentTextArea.removeClass( "ui-state-error" );
+    }, 
+    open : function() {
+      $( ".validateTips" ).text( $(this).data("articleTitle") ); 
+      console.log("I have been opened");
+      console.log (this);
+    }
+  });
+
+  form = $("#modalForm").on( "submit", function( event ) {
+    event.preventDefault();
+    addComment();
+  });
+
+
+
+
+
+
+
+
+
+
 
   // Whenever someone clicks a p tag
   $(document).on("click", "p", function() {
