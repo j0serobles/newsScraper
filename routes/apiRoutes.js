@@ -58,6 +58,7 @@ app.get("/scrape/:source", function(req, res) {
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
     db.Article.find({})
+      .populate("notes")
       .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
         res.json(dbArticle);
@@ -122,4 +123,19 @@ app.post("/articles/:id", function(req, res) {
         res.json(err);
       });
   });
+
+  //Route for fetching all notes associated to an Article.
+  app.get("/articles/:id/notes/", function(req, res) {
+    // Create a new note and pass the req.body to the entry
+    db.Article.findOne({ _id: req.params.id }, "notes")
+      .then(function(dbNotes) {
+      // If we were able to successfully retrieve the notes, send them back to the client
+        res.json(dbNotes);
+      })
+      .catch(function(err) {
+      // If an error occurred, send it to the client
+        res.json(err);
+      });
+  });
+
 };

@@ -4,8 +4,8 @@
 				<!-- Header -->
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
-							<h1><a href="index.html">Phase Shift</a></h1>
-							<span class="tag">by TEMPLATED</span>
+							<h1><a href="index.html">News Scraper</a></h1>
+							<span class="tag">UCF Coding Bootcamp</span>
 						</div>
 						<nav id="nav">
 							<ul>
@@ -44,15 +44,19 @@
 
 					<!-- Modal --> 
 					<div id="dialog-form" title="Create new Comment">
-					  <p class="validateTips">All form fields are required.</p>
+					  <p class="validateTips"></p>
+					  <br>
+					  <div id="commentsTable"></div>
 						
 						<form id="modalForm">
 							<fieldset>
-							<label for="commentTextArea">Name</label>
-							<textarea id="commentTextArea" class="text ui-widget-content ui-corner-all"></textarea>
+								<label for="commentTitle">Your Name</label>
+								<input id="commentTitle" class="text ui-widget-content ui-corner-all"></input>
+								<label for="commentTextArea">Comments</label>
+								<textarea id="commentTextArea" class="text ui-widget-content ui-corner-all"></textarea>
 						
-							<!-- Allow form submission with keyboard without duplicating the dialog button -->
-							<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+								<!-- Allow form submission with keyboard without duplicating the dialog button -->
+								<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
 							</fieldset>
 						</form>
 					</div>

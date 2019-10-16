@@ -3,21 +3,23 @@ $(document).ready( function() {
 
   var dialog;
   var form;
+  var articles;
   var commentTextArea = $( "#commentTextArea" ); 
+
 
   $.getJSON("/articles", function(data) {
 
-    //console.log (data);
+    articles = data; 
   
     let htmlString = '<div class="row no-collapse-1">';
     let imageURL = "";
     let commentsURL = "";
 
-    data.forEach( function ( articleElement, elementIndex ) {
+    articles.forEach( function ( articleElement, elementIndex ) {
 
       imageURL = articleElement.imgURL ? `<img src=${articleElement.imgURL} alt="${articleElement.imgURL}"</img>` : "";
-      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a href="#" class="leave-comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">Add a comment.</a></div></section>` : 
-        `<br><br><a href="/commentModal"${articleElement.notes.length} comments.</a> </div></section>`; 
+      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a href="#" class="comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">Be first to comment on this article.</a></div></section>` : 
+      `<br><br><a href="#" class="comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">View comments.</a></div></section>`; 
 
       // console.log("imageURL = "+ imageURL); 
 
@@ -42,9 +44,9 @@ $(document).ready( function() {
     $("#article-container").css("visibility","visible");
 
     //When the "Add Comments" link is followed:
-    $( ".leave-comment-link" ).click(function() {
+    $( ".comment-link" ).click(function() {
       dialog.data("articleID", $(this).attr("data-id")); 
-      dialog.data("articleTitle", $(this).attr("data-title")); 
+      dialog.data("articleTitle", $(this).attr("data-title"));  
       console.log (dialog.data("articleID")); 
       console.log (dialog.data("articleTitle")); 
 
@@ -56,15 +58,42 @@ $(document).ready( function() {
 
   //Funtion to add a comment to the database
   function addComment() {
-    console.log(arguments);
+    if ($( "#commentTextArea" ).val().length === 0) {
+      console.log ("Cannot add empty comment"); 
+      return;
+    }
+    else {
+      
+      // Run a POST request to save the comment, using what's entered in the textarea.
+      // The data to send is a Note object, as per models/Note.js
+      $.ajax({
+        method: "POST",
+        url: "/articles/" + dialog.data("articleID"),
+        data: {
+          // Value taken from title input
+          title: $("#commentTitle").val(),
+          // Value taken from note textarea
+          body: $("#commentTextArea").val()
+        }
+      })
+        // With that done
+        .then(function(data) {
+          // Log the response
+          console.log(data);
+          // Empty the notes section
+          $("#commentTitle").empty();
+          $("#commentTextArea").empty();
+          dialog.dialog( "close" );
+        });
+    }
   }
 
-  //Define a jQuery modal dialog based on the 
+  //Define a jQuery modal dialog based on the
   // dialog-form div from the page
   dialog = $( "#dialog-form" ).dialog({
     autoOpen: false,
-    height: 500,
-    width: 350,
+    height: 600,
+    width: 600,
     modal: true,
     buttons: {
       "Add comment": addComment,
@@ -77,9 +106,23 @@ $(document).ready( function() {
       commentTextArea.removeClass( "ui-state-error" );
     }, 
     open : function() {
-      $( ".validateTips" ).text( $(this).data("articleTitle") ); 
-      console.log("I have been opened");
-      console.log (this);
+      $( ".validateTips" ).text( $(this).data("articleTitle") );
+      $("#commentsTable").append("<table>");
+      $("#commentsTable").append("<thead>");
+        $("#commentsTable").append("<tr>");
+          $("#commentsTable").append("<th>Name</th>");
+          $("#commentsTable").append("<th>Comment</th>");
+        $("#commentsTable").append("</tr>");
+      $("#commentsTable").append("</thead>");
+
+      $("#commentsTable").append("<tbody>");
+      $("#commentsTable").append("<tr>");
+      $("#commentsTable").append("<td>sample</td>" );
+      $("#commentsTable").append("<td>sample</td>" );
+      $("#commentsTable").append("</tr>");
+      $("#commentsTable").append("</tbody>");
+
+
     }
   });
 
@@ -87,6 +130,9 @@ $(document).ready( function() {
     event.preventDefault();
     addComment();
   });
+
+
+
 
 
 
