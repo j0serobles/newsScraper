@@ -104,25 +104,6 @@ $(document).ready( function() {
     close: function() {
       form[ 0 ].reset();
       commentTextArea.removeClass( "ui-state-error" );
-    }, 
-    open : function() {
-      $( ".validateTips" ).text( $(this).data("articleTitle") );
-      $("#commentsTable").append("<table>");
-      $("#commentsTable").append("<thead>");
-        $("#commentsTable").append("<tr>");
-          $("#commentsTable").append("<th>Name</th>");
-          $("#commentsTable").append("<th>Comment</th>");
-        $("#commentsTable").append("</tr>");
-      $("#commentsTable").append("</thead>");
-
-      $("#commentsTable").append("<tbody>");
-      $("#commentsTable").append("<tr>");
-      $("#commentsTable").append("<td>sample</td>" );
-      $("#commentsTable").append("<td>sample</td>" );
-      $("#commentsTable").append("</tr>");
-      $("#commentsTable").append("</tbody>");
-
-
     }
   });
 
