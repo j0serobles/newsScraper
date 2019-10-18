@@ -1,15 +1,14 @@
-<table style="width:100%">
-  {{log this.notes}}
+<table id="comments-table">
+  {{log this}}
   {{#each this.notes}}
-    <tr>
+    <tr class="comments-table-row">
       <td>
-        <div class="w3-panel w3-leftbar w3-light-grey">
-          <p class="w3-xlarge w3-serif"><i>"{{this.body}}"</i></p>
-          <p>{{{this.title}}}</p>
+        <div>
+          <p><i>"{{this.body}}"</i> - {{this.title}}</p>
         </div>
       </td>
-      <td>
-          <a href="#" data-id="{{this._id}}">Delete this comment.</a>
+      <td style="vertical-align:middle" >
+          <a class="article-comment" href="#" alt="Delete this comment." data-id="{{_id}}"><i class="fas fa-trash-alt fa-2x"></i></a>
       </td>
     </tr>
   {{/each}}

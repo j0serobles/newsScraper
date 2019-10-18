@@ -19,8 +19,14 @@ app.get("/scrape/:source", function(req, res) {
       scrapeURL = "http://www.nytimes.com"; 
     }
     axios.get(scrapeURL).then(function(response) {
+      db.Note.remove({});
+      db.Article.remove({});
+
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
+
+      //Remove any existing documents from the Article collection
+
 
       // Now, we grab every h2 within an article tag, and do the following:
       $("article").each(function(i, element) {
@@ -48,9 +54,8 @@ app.get("/scrape/:source", function(req, res) {
             console.log(err);
           });
       });
+      res.send("scraped"); 
 
-      // Send a message to the client
-      res.send("Scrape Complete");
     });
   });
 
@@ -84,15 +89,15 @@ app.get("/articles", function(req, res) {
       });
   });
 
-// Route for grabbing a specific Article by id, populate it with it's note
-app.get("/articles/:id", function(req, res) {
+// Route for grabbing a specific Article by id, populate it with its notes
+app.get("/articlesJSON/", function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-    db.Article.findOne({ _id: req.params.id })
+    db.Article.find({})
       // ..and populate all of the notes associated with it
       .populate("notes")
-      .then(function(dbArticle) {
+      .then(function(dbArticles) {
         // If we were able to successfully find an Article with the given id, send it back to the client
-        res.json(dbArticle);
+        res.json(dbArticles);
       })
       .catch(function(err) {
         // If an error occurred, send it to the client
@@ -124,20 +129,23 @@ app.post("/articles/:id", function(req, res) {
 
 
   //Route for deleting a note associated to an Article
-  // Route for inserting an Article's associated Note
   app.delete("/articles/:id/notes/:note_id", function(req, res) {
     // Create a new note and pass the req.body to the entry
     db.Article.update({ _id: req.params.id }, {$pull : { notes: req.params.note_id } }, { new: true }
-    )
-      .then(function(dbArticle) {
-      // If we were able to successfully update an Article, send it back to the client
-        res.json(dbArticle);
-      })
-      .catch(function(err) {
-      // If an error occurred, send it to the client
+    ).then(function(dbArticle) {
+      // If we were able to successfully delete the note from the Article, delete the note document
+      console.log ("Removed notes from dbArticle " + dbArticle); 
+      db.Note.remove( { _id : req.params.note_id }
+      ).then(function (dbNote) {
+        console.log ("Removed document from Note collection");
+        res.json(dbNote);
+      }).catch(function(err) {
+        // If an error occurred, send it to the client
         res.json(err);
       });
-  });
+    });
+  });  
+
 
 
 
