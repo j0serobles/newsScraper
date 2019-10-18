@@ -1,0 +1,19 @@
+<table style="width:100%">
+  {{log this.notes}}
+  {{#each this.notes}}
+    <tr>
+      <td>
+        <div class="w3-panel w3-leftbar w3-light-grey">
+          <p class="w3-xlarge w3-serif"><i>"{{this.body}}"</i></p>
+          <p>{{{this.title}}}</p>
+        </div>
+      </td>
+      <td>
+          <a href="#" data-id="{{this._id}}">Delete this comment.</a>
+      </td>
+    </tr>
+  {{/each}}
+</table>
+
+
+

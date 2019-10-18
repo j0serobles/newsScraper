@@ -1,6 +1,7 @@
 //Require all models
 var db = require("../models");
 var util = require('util');
+var Handlebars = require ('handlebars'); 
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -59,15 +60,29 @@ app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
     db.Article.find({})
       .populate("notes")
-      .then(function(dbArticle) {
+      .then(function(dbArticles) {
       // If we were able to successfully find Articles, send them back to the client
-        res.json(dbArticle);
-      })
+      // res.json(dbArticle);
+        console.log (`${dbArticles.length} articles found.`);
+        res.render("home", { 
+          articles :  dbArticles, 
+          helpers : {
+            insertNewRow : function(indexNumber) {
+              if( (parseInt(indexNumber) % 3) === 0 )  {
+                return new Handlebars.SafeString(`</div><div class="row no-collapse-1">`);
+              } else {
+                return "";
+              }
+            } // end function
+          } // end helpers object
+        } //end context object
+        ); // end render method
+      }) // end .then
       .catch(function(err) {
       // If an error occurred, send it to the client
         res.json(err);
       });
-});
+  });
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {
@@ -124,18 +139,28 @@ app.post("/articles/:id", function(req, res) {
       });
   });
 
+
+
   //Route for fetching all notes associated to an Article.
   app.get("/articles/:id/notes/", function(req, res) {
-    // Create a new note and pass the req.body to the entry
-    db.Article.findOne({ _id: req.params.id }, "notes")
+
+    db.Article.findOne({ _id: req.params.id })
+      .populate("notes")
       .then(function(dbNotes) {
-      // If we were able to successfully retrieve the notes, send them back to the client
-        res.json(dbNotes);
-      })
+        // If we were able to successfully retrieve the article, render the notes in partial and send
+        res.render("partials/notes_table", { 
+          layout: false,
+          notes : dbNotes.notes
+        }); // end render method
+      })  // End then block and call
       .catch(function(err) {
       // If an error occurred, send it to the client
         res.json(err);
       });
+
   });
+
+
+
 
 };

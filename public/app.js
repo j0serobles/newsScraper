@@ -7,54 +7,50 @@ $(document).ready( function() {
   var commentTextArea = $( "#commentTextArea" ); 
 
 
-  $.getJSON("/articles", function(data) {
+  // $.getJSON("/articles_dummy", function(data) {
 
-    articles = data; 
+  //   articles = data; 
   
-    let htmlString = '<div class="row no-collapse-1">';
-    let imageURL = "";
-    let commentsURL = "";
+  //   let htmlString = '<div class="row no-collapse-1">';
+  //   let imageURL = "";
+  //   let commentsURL = "";
 
-    articles.forEach( function ( articleElement, elementIndex ) {
+  //   articles.forEach( function ( articleElement, elementIndex ) {
 
-      imageURL = articleElement.imgURL ? `<img src=${articleElement.imgURL} alt="${articleElement.imgURL}"</img>` : "";
-      commentsURL = (articleElement.notes.length === 0) ? `<br><br><a href="#" class="comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">Be first to comment on this article.</a></div></section>` : 
-      `<br><br><a href="#" class="comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">View comments.</a></div></section>`; 
+  //     imageURL = articleElement.imgURL ? `<img src=${articleElement.imgURL} alt="${articleElement.imgURL}"</img>` : "";
+  //     commentsURL = (articleElement.notes.length === 0) ? `<br><br><a href="#" class="comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">Be first to comment on this article.</a></div></section>` : 
+  //     `<br><br><a href="#" class="comment-link" data-id="${articleElement._id}" data-title="${articleElement.title}">View comments.</a></div></section>`; 
 
-      // console.log("imageURL = "+ imageURL); 
+  //     // console.log("imageURL = "+ imageURL); 
 
     
-      htmlString +=`<section class="4u"><a href="#" class="image featured">${imageURL}</a>`
-                 + `<div class="box"><p><strong>${articleElement.title}</strong><br>`
-                 + `${articleElement.summary}</p>`
-                 + `<a href="https://www.nytimes.com/${articleElement.link}" class="button">Read More</a>`
-                 + commentsURL;
+  //     htmlString +=`<section class="4u"><a href="#" class="image featured">${imageURL}</a>`
+  //                + `<div class="box"><p><strong>${articleElement.title}</strong><br>`
+  //                + `${articleElement.summary}</p>`
+  //                + `<a href="https://www.nytimes.com/${articleElement.link}" class="button">Read More</a>`
+  //                + commentsURL;
 
-      if ( (elementIndex + 1) % 3 === 0) {
-        htmlString +="</div>";
-        if ( (elementIndex + 1) !== data.length) {
-          htmlString += '<div class="row no-collapse-1">';
-        }
-      }
+  //     if ( (elementIndex + 1) % 3 === 0) {
+  //       htmlString +="</div>";
+  //       if ( (elementIndex + 1) !== data.length) {
+  //         htmlString += '<div class="row no-collapse-1">';
+  //       }
+  //     }
 
-    });
+  //   });
 
-    $("#article-container").empty();
-    $("#article-container").append(htmlString);
-    $("#article-container").css("visibility","visible");
+  //   $("#article-container").empty();
+  //   $("#article-container").append(htmlString);
+  //   $("#article-container").css("visibility","visible");
 
-    //When the "Add Comments" link is followed:
-    $( ".comment-link" ).click(function() {
-      dialog.data("articleID", $(this).attr("data-id")); 
-      dialog.data("articleTitle", $(this).attr("data-title"));  
-      console.log (dialog.data("articleID")); 
-      console.log (dialog.data("articleTitle")); 
+  //When the "Add Comments" link is followed:
+  //  return (false); 
+  //   });
 
-      dialog.dialog( "open" );
-      return (false); 
-    });
+  // });
 
-  });
+  //$("#article-container").css("visibility","visible");
+
 
   //Funtion to add a comment to the database
   function addComment() {
@@ -101,11 +97,27 @@ $(document).ready( function() {
         dialog.dialog( "close" );
       }
     },
+    open : function () { 
+      $.get("/articles/"+ dialog.data("articleID") + "/notes/", function (data) {
+        $("#commentsTable").empty();
+        $("#commentsTable").append(data); 
+      })
+    },
     close: function() {
       form[ 0 ].reset();
       commentTextArea.removeClass( "ui-state-error" );
     }
   });
+
+  $( ".comment-link" ).click(function() {
+    dialog.data("articleID", $(this).attr("data-id")); 
+    dialog.data("articleTitle", $(this).attr("data-title"));  
+    console.log (dialog.data("articleID")); 
+    console.log (dialog.data("articleTitle")); 
+    dialog.dialog( "open" );
+    return false;
+  });
+
 
   form = $("#modalForm").on( "submit", function( event ) {
     event.preventDefault();

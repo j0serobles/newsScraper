@@ -22,24 +22,42 @@
 						<section>
 							{{!-- <p>This is <strong>Phase Shift</strong>, a responsive HTML5 site template freebie by <a href="http://templated.co">TEMPLATED</a>. Released for free under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so use it for whatever (personal or commercial) &ndash; just give us credit! Check out more of our stuff at <a href="http://templated.co">our site</a> or follow us on <a href="http://twitter.com/templatedco">Twitter</a>.</p> --}}
 							<a href="/scrape/nyt" class="button">NY Times</a>
-							{{!-- Todo : Implement other sources}}
-							{{!-- <a href="#" class="button">WA. Post</a>
-							<a href="#" class="button">Orlando Sentinel</a> --}}
+							{{!-- Todo : Implement other sources --}}
+							{{!-- <a href="#" class="button">WA. Post</a> --}}
+							{{!-- <a href="#" class="button">Orlando Sentinel</a> --}}
 						</section>
 					</div>
 
 				<!-- Extra -->
 					<div id="extra">
 						<div id="article-container" class="container">
+
+							{{!-- {{log  this.articles}} --}}
+							
 							<div class="row no-collapse-1">
-								<section class="4u"> <a i href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
-									<div class="box">
-										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
-										<a href="#" class="button">Read More</a> 
-										<br><br><a id="leave-comment-link" href="#" data-id="">Add a comment.</a>
-									</div>
-								</section>
+								{{#each this.articles}}
+								  {{insertNewRow @index}}
+										<section class="4u"> 
+											{{#if this.imgURL}}
+											<a href="https://nytimes.com/{{this.link}}" class="image featured"><img src="{{this.imgURL}}" alt="Image for article : {{this.title}}"></a>
+											{{/if}}
+											<div class="box">
+												<p><strong>{{this.title}}</strong></p>
+												{{#if this.summary}}
+												<p>{{this.summary}}</p>
+												{{/if}}
+												<a href="https://nytimes.com/{{this.link}}" class="button">Read More</a> 
+												{{#if this.notes}}
+												    <br><br><a class="comment-link" href="#" data-id="{{this._id}}" data-title="{{this.title}}">View Comments</a>
+												  {{else}}
+												    <br><br><a class="comment-link" href="#" data-id="{{this._id}}" data-title="{{this.title}}">Be first to add a comment.</a>
+												 {{/if}}
+
+											</div>
+										</section>
+								{{/each}}
 							</div>
+
 						</div>
 					</div>
 
@@ -47,7 +65,8 @@
 					<div id="dialog-form" title="Create new Comment">
 					  <p class="validateTips"></p>
 					  <br>
-					  <div id="commentsTable"></div>
+					  <div id="commentsTable">
+					  </div>
 						
 						<form id="modalForm">
 							<fieldset>
