@@ -146,6 +146,17 @@ app.post("/articles/:id", function(req, res) {
     });
   });  
 
+  //route for deleting all articles and notes
+  app.get("/deleteAll", function (req, res) { 
+    db.Note.remove({})
+      .then( function (data) {
+        db.Article.remove({})
+          .then ( function (data) {
+            res.redirect("/articles");
+          });
+      })
+  });
+
 
 
 
