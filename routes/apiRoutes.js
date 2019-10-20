@@ -40,8 +40,36 @@ app.get("/scrape/:source", function(req, res) {
         result.summary = $(this).find("p").text();
         result.imgURL = $(this).find("a figure img").attr("src");
 
-        console.log(util.inspect(this));
-        console.log (`result is :` + JSON.stringify(result,'',2));
+        // 20-OCT-2019: engjoserobles@gmail.com : Append network address if URL starts with "/..."
+        console.log ("result.link is " + result.link);
+        console.log ("result.imgURL is " + result.imgURL);
+
+        if ( result.link && result.link.substring(0,4).toLowerCase() !== "http" ) {
+          switch (req.params.source) {
+          case "nyt" : result.link = "https://www.nytimes.com/" + result.link;
+            break;
+          case "wp"  : result.link = "https://www.washingtonpost.com/" + result.link;
+            break;
+          default: result.link = result.link;
+          }
+        }
+
+        if ( result.imgURL && result.imgURL.substring(0,4).toLowerCase() !== "http") {
+          switch (req.params.source) {
+          case "nyt" : result.imgURL = "https://www.nytimes.com/" + result.imgURL;
+            break;
+          case "wp"  : result.imgURL = "https://www.washingtonpost.com/" + result.imgURL;
+            break;
+          default: result.imgURL = result.imgURL;
+          }
+        }
+
+        
+        console.log ("result.link is " + result.link);
+        console.log ("result.imgURL is " + result.imgURL);
+
+        //console.log(util.inspect(this));
+        //console.log (`result is :` + JSON.stringify(result,'',2));
 
         // Create a new Article using the `result` object built from scraping
         db.Article.create(result)
@@ -71,6 +99,7 @@ app.get("/articles", function(req, res) {
         console.log (`${dbArticles.length} articles found.`);
         res.render("home", { 
           articles :  dbArticles, 
+          count    :  dbArticles.length,
           helpers : {
             insertNewRow : function(indexNumber) {
               if( (parseInt(indexNumber) % 3) === 0 )  {

@@ -133,10 +133,5 @@ $(document).ready( function() {
     event.preventDefault();
     addComment();
   });
-  
-  $(".loading-msg").text(""); 
-
-
-
 
 });

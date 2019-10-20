@@ -23,7 +23,7 @@
 							{{!-- <p>This is <strong>Phase Shift</strong>, a responsive HTML5 site template freebie by <a href="http://templated.co">TEMPLATED</a>. Released for free under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so use it for whatever (personal or commercial) &ndash; just give us credit! Check out more of our stuff at <a href="http://templated.co">our site</a> or follow us on <a href="http://twitter.com/templatedco">Twitter</a>.</p> --}}
 							<a href="#" class="button scrape-button">NY Times</a>
 							<div>
-								<p class="loading-msg">Loading&#8230;</p>
+								<p class="loading-msg"> Click to retrieve articles. {{this.count}} articles found.</p>
 							</div>
 							{{!-- Todo : Implement other sources --}}
 							{{!-- <a href="#" class="button">WA. Post</a> --}}
@@ -42,14 +42,14 @@
 								  {{insertNewRow @index}}
 										<section class="4u"> 
 											{{#if this.imgURL}}
-											<a href="https://nytimes.com/{{this.link}}" class="image featured"><img src="{{this.imgURL}}" alt="Image for article : {{this.title}}"></a>
+											<a href="{{this.link}}" class="image featured"><img src="{{this.imgURL}}" alt="Image for article : {{this.title}}"></a>
 											{{/if}}
 											<div class="box">
 												<p><strong>{{this.title}}</strong></p>
 												{{#if this.summary}}
 												<p>{{this.summary}}</p>
 												{{/if}}
-												<a href="https://nytimes.com/{{this.link}}" class="button">Read More</a> 
+												<a href="{{this.link}}" class="button">Read More</a> 
 												{{#if this.notes}}
 												    <br><br><a class="comment-link" href="#" data-id="{{this._id}}" data-title="{{this.title}}">View Comments</a>
 												  {{else}}
