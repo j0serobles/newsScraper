@@ -83,9 +83,10 @@ HTML/CSS/Javascript
 Back End:
 NodeJS : Asynchronous, event-driven JavaScript runtime.
 Express : Node.js web application framework (middleware).
-Mongoose
+MongoDB: #### MongoDB is a general purpose, document-based, distributed database.
+Mongoose : Schema modelling for MongoDB.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3MTM2ODIzNSwxOTg2MDE2MjE0LDE1OD
-EzNTI3ODcsMzAzNzkyMTY4XX0=
+eyJoaXN0b3J5IjpbLTEzNzExNzU2NzQsMTk4NjAxNjIxNCwxNT
+gxMzUyNzg3LDMwMzc5MjE2OF19
 -->
