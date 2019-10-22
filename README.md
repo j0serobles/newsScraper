@@ -71,12 +71,9 @@ Other functionality available:
             |       main.handlebars - Main HBS Layout
             |       
             \---partials
-                    notes_table.handlebars - Used in Modal dialog to render the
-                    
-
-
-
+                    notes_table.handlebars - Used in Modal dialog to render comments.
+                   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2NTcyMDAxNywxNTgxMzUyNzg3LDMwMz
+eyJoaXN0b3J5IjpbMTk4NjAxNjIxNCwxNTgxMzUyNzg3LDMwMz
 c5MjE2OF19
 -->
