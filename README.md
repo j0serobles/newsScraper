@@ -76,8 +76,11 @@ Other functionality available:
                     notes_table.handlebars - Used in Modal dialog to render comments.
                    
 ## Technologies Used
-
+Front End:
+HTML/CSS/Javascript
+jQuery - DOM Manipulation library
+HandlebarsJS - View rendering engine
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTAwODU3NTI0LDE5ODYwMTYyMTQsMTU4MT
-M1Mjc4NywzMDM3OTIxNjhdfQ==
+eyJoaXN0b3J5IjpbLTIwNTg0MTAxNjEsMTk4NjAxNjIxNCwxNT
+gxMzUyNzg3LDMwMzc5MjE2OF19
 -->
