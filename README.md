@@ -76,19 +76,28 @@ Other functionality available:
                     notes_table.handlebars - Used in Modal dialog to render comments.
                    
 ## Technologies Used
+
 Front End:
-HTML/CSS/Javascript
-[jQuery](https://jquery.com/) - DOM Manipulation, event handling, Ajax library
-[HandlebarsJS](https://handlebarsjs.com/) - View rendering engine
+ - HTML/CSS/Javascript
+ - [jQuery](https://jquery.com/) - DOM Manipulation, event handling,   
+   Ajax library
+ - [HandlebarsJS](https://handlebarsjs.com/) - View rendering engine
+
 Back End:
-[NodeJS](https://nodejs.org/en/about/) : Asynchronous, event-driven JavaScript runtime.
-[Express](https://expressjs.com/) : Node.js web application framework (middleware).
-[MongoDB](https://www.mongodb.com/): #### MongoDB is a general purpose, document-based, distributed database.
-[Mongoose](https://mongoosejs.com/) : Schema modelling for MongoDB.
-[Axios :](https://www.npmjs.com/package/axios) An HTTP based client for NodeJS. 
+
+ - [NodeJS](https://nodejs.org/en/about/) : Asynchronous, event-driven
+   JavaScript runtime.
+ - [Express](https://expressjs.com/) : Node.js web application framework
+   (middleware).
+ - [MongoDB](https://www.mongodb.com/): #### MongoDB is a general
+   purpose, document-based, distributed database.
+ - [Mongoose](https://mongoosejs.com/) : Schema modelling for MongoDB.
+- [Axios :](https://www.npmjs.com/package/axios) An HTTP based client
+   for NodeJS. 
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1NTk4ODY3LDE5ODYwMTYyMTQsMTU4MT
-M1Mjc4NywzMDM3OTIxNjhdfQ==
+eyJoaXN0b3J5IjpbMTc5NDc0MTM2NSwxNjU1OTg4NjcsMTk4Nj
+AxNjIxNCwxNTgxMzUyNzg3LDMwMzc5MjE2OF19
 -->
