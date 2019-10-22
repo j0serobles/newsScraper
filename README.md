@@ -12,8 +12,10 @@ The user can also remove comments from the list of comments by clicking the tras
 
 ![Article Comments modal Dialog](https://github.com/j0serobles/newsScraper/blob/master/images/commentmodal.jpg)
 
-To retrieve the articles from the current home page for the New York Times, the user should click on the 
+To retrieve the articles from the current home page for the New York Times, the user should click on 
+
 ![NY Times button](https://github.com/j0serobles/newsScraper/blob/master/images/nytimesbutton.jpg)
+
 The number of articles retrieved will be shown in the status mesage below the button.
 
 Other functionality available:
@@ -73,7 +75,9 @@ Other functionality available:
             \---partials
                     notes_table.handlebars - Used in Modal dialog to render comments.
                    
+## Technologies Used
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4NjAxNjIxNCwxNTgxMzUyNzg3LDMwMz
-c5MjE2OF19
+eyJoaXN0b3J5IjpbNTAwODU3NTI0LDE5ODYwMTYyMTQsMTU4MT
+M1Mjc4NywzMDM3OTIxNjhdfQ==
 -->
