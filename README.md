@@ -7,7 +7,7 @@ The application has been deployed to [Heroku](https://damp-tor-55631.herokuapp.c
 ![newsScraper landing page](https://github.com/j0serobles/newsScraper/blob/master/images/homepage.jpg)
 
 Cliking on an article's image or the "Read More" button below it opens the article in a new web browser tab. 
-
+Following the "Be First to comment on this article" or "View Comments" link opens the "Comments" modal dialog for this article.  Here, the user can review existing comments associated to th
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzQ2MTExOTQsMzAzNzkyMTY4XX0=
+eyJoaXN0b3J5IjpbLTUwNTAwMTk0OCwzMDM3OTIxNjhdfQ==
 -->
