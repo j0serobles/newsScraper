@@ -81,12 +81,12 @@ HTML/CSS/Javascript
 [jQuery](https://jquery.com/) - DOM Manipulation, event handling, Ajax library
 [HandlebarsJS](https://handlebarsjs.com/) - View rendering engine
 Back End:
-NodeJS : Asynchronous, event-driven JavaScript runtime.
-Express : Node.js web application framework (middleware).
-MongoDB: #### MongoDB is a general purpose, document-based, distributed database.
-Mongoose : Schema modelling for MongoDB.
+[NodeJS](https://nodejs.org/en/about/) : Asynchronous, event-driven JavaScript runtime.
+[Express](https://expressjs.com/) : Node.js web application framework (middleware).
+[MongoDB](https://www.mongodb.com/): #### MongoDB is a general purpose, document-based, distributed database.
+[Mongoose](https://mongoosejs.com/) : Schema modelling for MongoDB.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNzExNzU2NzQsMTk4NjAxNjIxNCwxNT
+eyJoaXN0b3J5IjpbLTEzMDY0NDcxNzYsMTk4NjAxNjIxNCwxNT
 gxMzUyNzg3LDMwMzc5MjE2OF19
 -->
