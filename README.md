@@ -27,30 +27,30 @@ Other functionality available:
     +--- newsScraper
         |   .eslintignore - Files ignored by eslint
         |   .eslintrc.json - eslink rules
-        |   .gitignore - f
-        |   package-lock.json
-        |   package.json
-        |   README.md
-        |   server.js
+        |   .gitignore - Files ignored by Git
+        |   package-lock.json - Created by npm init
+        |   package.json - Created by npm init
+        |   README.md - This file
+        |   server.js - The main server file
         |   
-        +---images
+        +---images - Documentation images
         |       commentmodal.jpg
         |       homepage.jpg
         |       nytimesbutton.jpg
         |       
-        +---models
+        +---models -- Mongoose/MongoDB entities.
         |       Article.js
         |       index.js
         |       Note.js
         |       
-        +---public
+        +---public - Static/Public content
         |   |   app.js
         |   |   left-sidebar.html
         |   |   LICENSE.txt
         |   |   no-sidebar.html
         |   |   right-sidebar.html
         |   |   
-        |   +---css
+        |   +---css - Stylings
         |   |   |   font-awesome.min.css
         |   |   |   modal.css
         |   |   |   skel.css
@@ -130,6 +130,6 @@ Other functionality available:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NzA3NzIwNCwxNTgxMzUyNzg3LDMwMz
-c5MjE2OF19
+eyJoaXN0b3J5IjpbLTE2OTMwMTE2MDcsMTU4MTM1Mjc4NywzMD
+M3OTIxNjhdfQ==
 -->
