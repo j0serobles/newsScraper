@@ -60,76 +60,23 @@ Other functionality available:
         |   |   |   style-normal.css
         |   |   |   style-wide.css
         |   |   |   style.css
-        |   |   |   
-        |   |   \---ie
-        |   |           backgroundsize.min.htc
-        |   |           html5shiv.js
-        |   |           v8.css
-        |   |           
-        |   +---fonts
-        |   |       fontawesome-webfont.eot
-        |   |       fontawesome-webfont.svg
-        |   |       fontawesome-webfont.ttf
-        |   |       fontawesome-webfont.woff
-        |   |       FontAwesome.otf
-        |   |       
-        |   +---images
-        |   |       bg.jpg
-        |   |       pic01.jpg
-        |   |       pic02.jpg
-        |   |       pic03.jpg
-        |   |       pic04.jpg
-        |   |       
-        |   +---jqueryui
-        |   |   |   AUTHORS.txt
-        |   |   |   index.html
-        |   |   |   jquery-ui.css
-        |   |   |   jquery-ui.js
-        |   |   |   jquery-ui.min.css
-        |   |   |   jquery-ui.min.js
-        |   |   |   jquery-ui.structure.css
-        |   |   |   jquery-ui.structure.min.css
-        |   |   |   jquery-ui.theme.css
-        |   |   |   jquery-ui.theme.min.css
-        |   |   |   LICENSE.txt
-        |   |   |   package.json
-        |   |   |   
-        |   |   +---external
-        |   |   |   \---jquery
-        |   |   |           jquery.js
-        |   |   |           
-        |   |   \---images
-        |   |           ui-icons_444444_256x240.png
-        |   |           ui-icons_555555_256x240.png
-        |   |           ui-icons_777620_256x240.png
-        |   |           ui-icons_777777_256x240.png
-        |   |           ui-icons_cc0000_256x240.png
-        |   |           ui-icons_ffffff_256x240.png
-        |   |           
-        |   \---js
-        |           init.js
-        |           jquery.dropotron.min.js
-        |           jquery.min.js
-        |           skel-layers.min.js
-        |           skel.min.js
-        |           
         +---routes
-        |       apiRoutes.js
-        |       htmlRoutes.js
+        |       apiRoutes.js - API routes for Express
+        |       htmlRoutes.js - HTML routes for Express
         |       
-        \---views
-            |   home.handlebars
+        \---views - Handlebars Front End
+            |   home.handlebars - Home Page
             |   
             +---layouts
-            |       main.handlebars
+            |       main.handlebars - Main HBS Layout
             |       
             \---partials
-                    notes_table.handlebars
+                    notes_table.handlebars - Used in Modal dialog to render the
                     
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTMwMTE2MDcsMTU4MTM1Mjc4NywzMD
-M3OTIxNjhdfQ==
+eyJoaXN0b3J5IjpbMTM2NTcyMDAxNywxNTgxMzUyNzg3LDMwMz
+c5MjE2OF19
 -->
