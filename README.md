@@ -78,9 +78,11 @@ Other functionality available:
 ## Technologies Used
 Front End:
 HTML/CSS/Javascript
-jQuery - DOM Manipulation library
-HandlebarsJS - View rendering engine
+[jQuery](https://jquery.com/) - DOM Manipulation, event handling, Ajax library
+[HandlebarsJS](https://handlebarsjs.com/) - View rendering engine
+Back End:
+Express : Routing
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTg0MTAxNjEsMTk4NjAxNjIxNCwxNT
-gxMzUyNzg3LDMwMzc5MjE2OF19
+eyJoaXN0b3J5IjpbLTI2NDAzNjE3NSwxOTg2MDE2MjE0LDE1OD
+EzNTI3ODcsMzAzNzkyMTY4XX0=
 -->
