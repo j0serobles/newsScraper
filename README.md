@@ -81,8 +81,11 @@ HTML/CSS/Javascript
 [jQuery](https://jquery.com/) - DOM Manipulation, event handling, Ajax library
 [HandlebarsJS](https://handlebarsjs.com/) - View rendering engine
 Back End:
-Express : Routing
+NodeJS : Asynchronous, event-driven JavaScript runtime.
+Express : Node.js web application framework (middleware).
+Mongoose
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NDAzNjE3NSwxOTg2MDE2MjE0LDE1OD
+eyJoaXN0b3J5IjpbMTQ3MTM2ODIzNSwxOTg2MDE2MjE0LDE1OD
 EzNTI3ODcsMzAzNzkyMTY4XX0=
 -->
