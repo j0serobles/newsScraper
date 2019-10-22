@@ -22,6 +22,11 @@ Other functionality available:
  - **Remove all articles** : This link will remove all articles downloaded to the local database (This is always done as the first step when new articles are retrieved). 
 
 
+## File Structure
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MTM1Mjc4NywzMDM3OTIxNjhdfQ==
+eyJoaXN0b3J5IjpbLTE3NzE2MzU1NzAsMTU4MTM1Mjc4NywzMD
+M3OTIxNjhdfQ==
 -->
