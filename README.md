@@ -14,7 +14,12 @@ The user can also remove comments from the list of comments by clicking the tras
 
 To retrieve the articles from the current home page for the New York Times, the user should click on the 
 ![NY Times button](https://github.com/j0serobles/newsScraper/blob/master/images/nytimesbutton.jpg)
-This makes
+The number of articles retrieved will be shown in the status mesage below the button.
+Other functionality:
+
+ - List all scraped articles in JSON format: This can be done by cliking the "Articles JSON" link in the home page.
+ - Remove all articles
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE5MDY5NjU0LDMwMzc5MjE2OF19
+eyJoaXN0b3J5IjpbLTI3MjMxMTU4NSwzMDM3OTIxNjhdfQ==
 -->
