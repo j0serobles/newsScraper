@@ -13,7 +13,8 @@ The user can also remove comments from the list of comments by clicking the tras
 ![Article Comments modal Dialog](https://github.com/j0serobles/newsScraper/blob/master/images/commentmodal.jpg)
 
 To retrieve the articles from the current home page for the New York Times, the user should click on the 
-
+![NY Times button](https://github.com/j0serobles/newsScraper/blob/master/images/nytimesbutton.jpg)
+This makes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI3NTc0NjkwLDMwMzc5MjE2OF19
+eyJoaXN0b3J5IjpbNTE5MDY5NjU0LDMwMzc5MjE2OF19
 -->
