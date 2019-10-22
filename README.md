@@ -6,7 +6,8 @@ The application has been deployed to [Heroku](https://damp-tor-55631.herokuapp.c
 
 ![newsScraper landing page](https://github.com/j0serobles/newsScraper/blob/master/images/homepage.jpg)
 
-Cliking on an article's image or the "Read More" button below it opens a new tab in the browser to The New York Time's website
+Cliking on an article's image or the "Read More" button below it opens the article in a new web browser tab. 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxODE3NDc5OSwzMDM3OTIxNjhdfQ==
+eyJoaXN0b3J5IjpbLTEwMzQ2MTExOTQsMzAzNzkyMTY4XX0=
 -->
